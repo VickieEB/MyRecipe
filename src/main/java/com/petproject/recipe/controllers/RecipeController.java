@@ -1,6 +1,7 @@
 package com.petproject.recipe.controllers;
 
-import com.petproject.recipe.service.RecipeService;
+
+import com.petproject.recipe.service.RecipeServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/recipe")
 public class RecipeController {
 
-    private RecipeService recipeService;
+    private RecipeServiceImpl recipeService;
 
-    public RecipeController(RecipeService recipeService) {
+    public RecipeController(RecipeServiceImpl recipeService) {
         this.recipeService = recipeService;
     }
 
