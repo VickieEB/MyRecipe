@@ -132,16 +132,16 @@ public class RecipeDataLoader implements ApplicationListener<ContextRefreshedEve
         perfectGuacamole.setServings(4);
         perfectGuacamole.setUrl("https://www.simplyrecipes.com/recipes/perfect_guacamole/");
 
-        perfectGuacamole.getIngredients().add(new Ingredient("Ripe Avocado", new BigDecimal(2), eachUOM, perfectGuacamole));
-        perfectGuacamole.getIngredients().add(new Ingredient("Salt", new BigDecimal(.5), tablespoonUOM, perfectGuacamole));
-        perfectGuacamole.getIngredients().add(new Ingredient("Fresh Lime Juice or Lemon Juice", new BigDecimal(1), tablespoonUOM, perfectGuacamole));
-        perfectGuacamole.getIngredients().add(new Ingredient("Minced Onion or thinly sliced green Onion", new BigDecimal(2), tablespoonUOM, perfectGuacamole));
-        perfectGuacamole.getIngredients().add(new Ingredient("Serrano Chiles, stems and seeds removed, minced", new BigDecimal(2), eachUOM, perfectGuacamole));
-        perfectGuacamole.getIngredients().add(new Ingredient("Cilantro", new BigDecimal(2), tablespoonUOM, perfectGuacamole));
-        perfectGuacamole.getIngredients().add(new Ingredient("Freshly grated Black Pepper", new BigDecimal(2), dashUOM, perfectGuacamole));
-        perfectGuacamole.getIngredients().add(new Ingredient("Ripe tomato, seeds and pulp removed, chopped", new BigDecimal(.5), eachUOM, perfectGuacamole));
-        perfectGuacamole.getIngredients().add(new Ingredient("Red radishes or jicama, to garnish", new BigDecimal(1), someUOM, perfectGuacamole));
-        perfectGuacamole.getIngredients().add(new Ingredient("Tortilla chips, to serve", new BigDecimal(1), someUOM, perfectGuacamole));
+        perfectGuacamole.addIngredient(new Ingredient("Ripe Avocado", new BigDecimal(2), eachUOM));
+        perfectGuacamole.addIngredient(new Ingredient("Salt", new BigDecimal(.5), tablespoonUOM));
+        perfectGuacamole.addIngredient(new Ingredient("Fresh Lime Juice or Lemon Juice", new BigDecimal(1), tablespoonUOM));
+        perfectGuacamole.addIngredient(new Ingredient("Minced Onion or thinly sliced green Onion", new BigDecimal(2), tablespoonUOM));
+        perfectGuacamole.addIngredient(new Ingredient("Serrano Chiles, stems and seeds removed, minced", new BigDecimal(2), eachUOM));
+        perfectGuacamole.addIngredient(new Ingredient("Cilantro", new BigDecimal(2), tablespoonUOM));
+        perfectGuacamole.addIngredient(new Ingredient("Freshly grated Black Pepper", new BigDecimal(2), dashUOM));
+        perfectGuacamole.addIngredient(new Ingredient("Ripe tomato, seeds and pulp removed, chopped", new BigDecimal(.5), eachUOM));
+        perfectGuacamole.addIngredient(new Ingredient("Red radishes or jicama, to garnish", new BigDecimal(1), someUOM));
+        perfectGuacamole.addIngredient(new Ingredient("Tortilla chips, to serve", new BigDecimal(1), someUOM));
 
         perfectGuacamole.setDirections("1. Cut the avocado, remove flesh: Cut the avocados in half. Remove the pit. Score the inside of the avocado with a blunt knife and scoop out the flesh with a spoon. Place in a bowl.\n" +
                 "2. Using a fork, roughly mash the avocado. (Don't overdo it! The guacamole should be a little chunky.)\n" +
@@ -158,7 +158,7 @@ public class RecipeDataLoader implements ApplicationListener<ContextRefreshedEve
         perfectGuacNotes.setRecipeNotes("The simplest version of guacamole is just mashed avocados with salt. Don’t let the lack of availability of other ingredients stop you from making guacamole." +
                 "For a very quick guacamole just take a 1/4 cup of salsa and mix it in with your mashed avocados." +
                 "Don’t have enough avocados? To extend a limited supply of avocados, add either sour cream or cottage cheese to your guacamole dip. Purists may be horrified, but so what? It tastes great.");
-        perfectGuacNotes.setRecipe(perfectGuacamole);
+        //perfectGuacNotes.setRecipe(perfectGuacamole);
         perfectGuacamole.setNotes(perfectGuacNotes);
 
         recipelist.add(perfectGuacamole);
@@ -195,7 +195,7 @@ public class RecipeDataLoader implements ApplicationListener<ContextRefreshedEve
                 "\n" +
                 "\n" +
                 "Read more: http://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/#ixzz4jvu7Q0MJ");
-        tacoNotes.setRecipe(spicyGrilledChickenTacos);
+        //tacoNotes.setRecipe(spicyGrilledChickenTacos);
         spicyGrilledChickenTacos.setNotes(tacoNotes);
 
 

@@ -35,7 +35,8 @@
             <td th:text="${recipe.getServings()}"></td>
             <td th:text="${recipe.getIngredients()}"></td>
             <td th:text="${recipe.getDirections()}"></td>
-            <a th:href="@{${recipe.getUrl()}}"><td th:text="${recipe.getUrl()}"></td></a>
+
+            <a href="index.html" th:href="@{${recipe.getId()}}"><td th:text="${recipe.getUrl()}"></td></a>
         </tr>
     </tbody>
 
