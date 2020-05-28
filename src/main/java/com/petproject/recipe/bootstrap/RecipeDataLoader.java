@@ -5,6 +5,7 @@ import com.petproject.recipe.domain.enums.Difficulty;
 import com.petproject.recipe.repositories.CategoryRepository;
 import com.petproject.recipe.repositories.RecipeRepository;
 import com.petproject.recipe.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Component
 public class RecipeDataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -29,7 +31,10 @@ public class RecipeDataLoader implements ApplicationListener<ContextRefreshedEve
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
+        log.debug("Getting Bootstrap Data");
         recipeRepository.saveAll(getRecipes());
+        log.debug("Bootstrap Data - Loaded");
+
     }
 
 
@@ -126,7 +131,7 @@ public class RecipeDataLoader implements ApplicationListener<ContextRefreshedEve
         //Create Recipe
         Recipe perfectGuacamole = new Recipe();
         perfectGuacamole.setDescription("Perfect Guacamole");
-        perfectGuacamole.setDifficulty(Difficulty.EASY);
+        perfectGuacamole.setDifficulty(Difficulty.HARD);
         perfectGuacamole.getCategories().add(mexicanCat);
         perfectGuacamole.setPrepTime(10);
         perfectGuacamole.setServings(4);
