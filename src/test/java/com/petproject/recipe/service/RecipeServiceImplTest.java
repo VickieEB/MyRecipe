@@ -26,8 +26,9 @@ public class RecipeServiceImplTest {
         recipeService = new RecipeServiceImpl(recipeRepository);
     }
 
+
     @Test
-    public void getRecipes() {
+    public void getRecipesTest() {
         Recipe recipe = new Recipe();
         HashSet recipesData = new HashSet<>();
         recipesData.add(recipe);
