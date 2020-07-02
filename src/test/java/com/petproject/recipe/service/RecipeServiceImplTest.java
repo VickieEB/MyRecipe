@@ -27,6 +27,13 @@ public class RecipeServiceImplTest {
     }
 
 
+//    @Test
+//    public void getRecipeByIdTest() {
+//        Recipe recipe = new Recipe();
+//        when(recipeRepository.findById(anyLong())).thenReturn(Optional.of(recipe));
+//    }
+
+
     @Test
     public void getRecipesTest() {
         Recipe recipe = new Recipe();
