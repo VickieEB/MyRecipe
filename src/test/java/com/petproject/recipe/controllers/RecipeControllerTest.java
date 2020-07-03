@@ -4,6 +4,7 @@ import com.petproject.recipe.domain.Recipe;
 import com.petproject.recipe.service.RecipeServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -46,7 +47,8 @@ public class RecipeControllerTest {
     }
 
     @Test
-    public void listRecipe() {
+    @DisplayName("Testing Recipes List")
+    public void testListRecipe() {
         Set<Recipe> recipes = new HashSet<>();
         Recipe recipe1 = new Recipe();
         Recipe recipe2 = new Recipe();
@@ -68,5 +70,16 @@ public class RecipeControllerTest {
         assertEquals(2, setInController.size());
 
 
+    }
+
+    @Test
+    @DisplayName("Testing get Recipe by Id")
+    public void testGetRecipeById() throws Exception{
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
+
+        mockMvc.perform(get("/recipe/show/1")).andExpect(status().isOk()).andExpect(view().name("recipe/show"));
     }
 }

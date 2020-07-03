@@ -21,6 +21,9 @@ public class IndexController {
         this.unitOfMeasureRepository = unitOfMeasureRepository;
     }
 
+    /*
+        Just checking the properties of the different objects
+     */
     @RequestMapping({"", "/", "/index"})
     public String getIndexPage(){
         Optional<Category> categoryOptional = categoryRepository.findByDescription("Mexican");
