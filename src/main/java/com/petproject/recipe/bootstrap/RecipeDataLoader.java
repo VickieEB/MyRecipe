@@ -135,6 +135,7 @@ public class RecipeDataLoader implements ApplicationListener<ContextRefreshedEve
         perfectGuacamole.getCategories().add(mexicanCat);
         perfectGuacamole.setPrepTime(10);
         perfectGuacamole.setServings(4);
+        perfectGuacamole.setCookTime(15);
         perfectGuacamole.setUrl("https://www.simplyrecipes.com/recipes/perfect_guacamole/");
 
         perfectGuacamole.addIngredient(new Ingredient("Ripe Avocado", new BigDecimal(2), eachUOM));
