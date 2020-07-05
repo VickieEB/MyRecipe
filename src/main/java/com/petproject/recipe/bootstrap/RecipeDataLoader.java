@@ -136,6 +136,7 @@ public class RecipeDataLoader implements ApplicationListener<ContextRefreshedEve
         perfectGuacamole.setPrepTime(10);
         perfectGuacamole.setServings(4);
         perfectGuacamole.setCookTime(15);
+        perfectGuacamole.setSource("Simply Recipes");
         perfectGuacamole.setUrl("https://www.simplyrecipes.com/recipes/perfect_guacamole/");
 
         perfectGuacamole.addIngredient(new Ingredient("Ripe Avocado", new BigDecimal(2), eachUOM));
@@ -180,6 +181,7 @@ public class RecipeDataLoader implements ApplicationListener<ContextRefreshedEve
         spicyGrilledChickenTacos.setPrepTime(20);
         spicyGrilledChickenTacos.setServings(6);
         spicyGrilledChickenTacos.setCookTime(15);
+        spicyGrilledChickenTacos.setSource("Simply Recipes");
         spicyGrilledChickenTacos.setUrl("https://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/");
 
 

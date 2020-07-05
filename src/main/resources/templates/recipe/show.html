@@ -11,6 +11,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
 </head>
 <body>
+
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -35,7 +36,7 @@
                                 <h5>Prep Time:</h5>
                             </div>
                             <div class="col-md-3">
-                                <p th:text="${recipe.prepTime}">30 min</p>
+                                <p th:text="${(recipe.prepTime) + ' Min(s)'}">30 min</p>
                             </div>
                             <div class="col-md-3">
                                 <h5 >Difficulty:</h5>
@@ -49,13 +50,13 @@
                                 <h5>Cooktime:</h5>
                             </div>
                             <div class="col-md-3">
-                                <p th:text="${recipe.cookTime}">30 min</p>
+                                <p th:text="${(recipe.cookTime) + ' Min(s)'}">30 min</p>
                             </div>
                             <div class="col-md-3">
                                 <h5>Servings:</h5>
                             </div>
                             <div class="col-md-3">
-                                <p th:text="${recipe.servings}">4</p>
+                                <p th:text="${recipe.servings + ' Person(s)'}">4</p>
                             </div>
                         </div>
                         <div class="row">
@@ -63,7 +64,7 @@
                                 <h5>Source:</h5>
                             </div>
                             <div class="col-md-3">
-                                <p th:text="${recipe.source}">30 min</p>
+                                <p th:text="${recipe.source}">The Food Channel</p>
                             </div>
                             <div class="col-md-3">
                                 <h5>URL:</h5>
@@ -82,7 +83,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <ul th:each="ingredient : ${recipe.getIngredients()}">
-                                    <li th:text="${ingredient.getDescription()}">1 Cup of milk</li>
+                                    <li th:text="${ingredient.getAmount() + ' ' +  ingredient.uom.getDescription() + ' - ' + ingredient.getDescription()}">1 Cup of milk</li>
                                 </ul>
                             </div>
                         </div>
