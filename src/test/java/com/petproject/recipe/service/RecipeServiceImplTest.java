@@ -1,5 +1,7 @@
 package com.petproject.recipe.service;
 
+import com.petproject.recipe.converters.RecipeCommandToRecipe;
+import com.petproject.recipe.converters.RecipeToRecipeCommand;
 import com.petproject.recipe.domain.Recipe;
 import com.petproject.recipe.repositories.RecipeRepository;
 import org.junit.Before;
@@ -23,10 +25,16 @@ public class RecipeServiceImplTest {
     @Mock
     RecipeRepository recipeRepository;
 
+    @Mock
+    RecipeCommandToRecipe recipeCommandToRecipe;
+
+    @Mock
+    RecipeToRecipeCommand recipeToRecipeCommand;
+
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @Test
