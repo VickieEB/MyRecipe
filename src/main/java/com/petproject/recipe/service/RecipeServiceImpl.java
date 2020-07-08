@@ -54,4 +54,19 @@ public class RecipeServiceImpl implements RecipeService{
         log.debug("Saved Recipe Id: " + savedRecipe.getId());
         return recipeToRecipeCommand.convert(savedRecipe);
     }
+
+    @Override
+    @Transactional
+    public RecipeCommand findRecipeCommandById(Long id) {
+
+        //One way to do it
+//        Optional<Recipe> recipe = recipeRepository.findById(id);
+//        if (!recipe.isPresent()){
+//            throw new RuntimeException("This Recipe doesnt exist");
+//        }
+//        RecipeCommand recipeCommand = recipeToRecipeCommand.convert(recipe.get());
+//        return recipeCommand;
+
+        return recipeToRecipeCommand.convert(findById(id));
+    }
 }
