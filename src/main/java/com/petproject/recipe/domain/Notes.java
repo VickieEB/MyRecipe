@@ -20,11 +20,6 @@ public class Notes {
     @Lob
     private String recipeNotes;
 
-    public Notes() {
-    }
 
-    protected boolean canEqual(final Object other) {
-        return other instanceof Notes;
-    }
 
 }
