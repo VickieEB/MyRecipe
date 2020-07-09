@@ -24,6 +24,7 @@
                                 <th>Recipe Name</th>
                                 <th><a href="#">View</a></th>
                                 <th><a href="#">Update</a></th>
+                                <th><a href="#">Delete</a></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -32,6 +33,7 @@
                                 <td th:text="${recipe.getDescription()}"></td>
                                 <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/show'}" th:text="View">View</a></td>
                                 <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/update'}">Update</a></td>
+                                <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/delete'}">Delete</a></td>
                             </tr>
                             </tbody>
                         </table>
@@ -39,6 +41,7 @@
                     </div>
 
                 </div>
+                <button type="button" class="btn btn-outline-success"><a href="#" th:href="@{'/recipe/new'}">Add Recipe</a></button>
             </div>
         </div>
     </div>
