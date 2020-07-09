@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class RecipeControllerTest {
 
     @Mock
-    RecipeServiceImpl recipeService;
+    RecipeServiceImpl recipeService     ;
 
     @Mock
     Model model;
