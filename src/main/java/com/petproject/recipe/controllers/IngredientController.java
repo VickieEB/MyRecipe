@@ -1,6 +1,8 @@
 package com.petproject.recipe.controllers;
 
 import com.petproject.recipe.commands.IngredientCommand;
+import com.petproject.recipe.commands.RecipeCommand;
+import com.petproject.recipe.commands.UnitOfMeasureCommand;
 import com.petproject.recipe.service.IngredientService;
 import com.petproject.recipe.service.RecipeService;
 import com.petproject.recipe.service.UnitOfMeasureService;
@@ -41,6 +43,24 @@ public class IngredientController {
         model.addAttribute("ingredient", ingredientService.findByRecipeIdAndIngredientId(Long.valueOf(recipeId), Long.valueOf(ingredientId)));
         return "recipe/ingredient/show";
 
+    }
+
+    @GetMapping
+    @RequestMapping("recipe/{recipeId}/ingredient/new")
+    public String newIngredient(@PathVariable String recipeId, Model model){
+        RecipeCommand recipeCommand = recipeService.findRecipeCommandById(Long.valueOf(recipeId));
+        //todo raise exception if null
+
+        //return parent id for hidden form property
+        IngredientCommand ingredientCommand = new IngredientCommand();
+        ingredientCommand.setRecipeId(Long.valueOf(recipeId));
+        model.addAttribute("ingredient", ingredientCommand);
+
+        //initialize UOM
+        ingredientCommand.setUom(new UnitOfMeasureCommand());
+        model.addAttribute("uomList", unitOfMeasureService.listAllUoms());
+
+        return "recipe/ingredient/ingredientform";
     }
 
     @GetMapping
