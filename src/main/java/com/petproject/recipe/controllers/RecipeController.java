@@ -2,11 +2,19 @@ package com.petproject.recipe.controllers;
 
 
 import com.petproject.recipe.commands.RecipeCommand;
+import com.petproject.recipe.domain.Recipe;
 import com.petproject.recipe.service.RecipeServiceImpl;
+import com.petproject.recipe.utility.RecipePDFExporter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Set;
 
 @Slf4j
 @Controller
@@ -59,5 +67,20 @@ public class RecipeController {
     public String deleteById(@PathVariable String id){
         recipeService.deleteById(Long.valueOf(id));
         return "redirect:/recipe/";
+    }
+
+    @GetMapping("/export")
+    public void exportRecipe(HttpServletResponse response)throws Exception {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormat.format(new Date());
+        response.setContentType("application/pdf");
+        String headerKey =  "Content-Disposition";
+        String headerValue = "attachment;  filename=recipelist_"+ currentDateTime + ".pdf";
+        response.setHeader(headerKey, headerValue);
+
+        Set<Recipe> recipes = recipeService.getRecipes();
+
+        RecipePDFExporter exporter = new RecipePDFExporter(recipes);
+        exporter.export(response);
     }
 }
