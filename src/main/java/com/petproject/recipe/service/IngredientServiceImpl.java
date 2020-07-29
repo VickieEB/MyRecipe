@@ -109,4 +109,9 @@ public class IngredientServiceImpl implements IngredientService {
 
         }
     }
+
+    @Override
+    public void deleteById(Long recipeId, Long ingredientId) {
+
+    }
 }

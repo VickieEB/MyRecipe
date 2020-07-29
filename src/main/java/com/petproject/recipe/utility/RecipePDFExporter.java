@@ -61,6 +61,7 @@ public class RecipePDFExporter {
         PdfPTable table = new PdfPTable(3);
         table.setWidthPercentage(100);
         table.setSpacingBefore(15);
+        table.setKeepTogether(true); 
         table.setWidths(new float[]{1.0f, 6.0f, 5.0f});
 
         writeTableHeader(table);
