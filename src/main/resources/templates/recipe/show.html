@@ -31,7 +31,8 @@
                                 </ul>
                             </div>
                             <div class="col-md-6">
-                                <img src="../../static/images/image_coming_soon.jpg" th:src="@{/images/image_coming_soon.jpg}" width="160" height="160">
+                                <img src="../../static/images/image_coming_soon.jpg" th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}" width="200" height="200">
+
                                 <a class="btn btn-outline-success" href="#"
                                    th:href="@{'/recipe/' + ${recipe.id} + '/image'}" role="button">Change Image</a>
                             </div>

@@ -24,8 +24,12 @@
                             <div class="col-md-6">
                                 <form action="http:\\localhost" method="post" enctype="multipart/form-data"
                                       th:action="@{'/recipe/' + ${recipe.getId()} + '/image'}">
-                                    <label class="custom-control-label">Select Image File</label>
-                                    <input id="imagefile" name="imagefile" type="file" class="form-control-file">
+
+                                    <div class="custom-file">
+                                        <label for="imagefile" class="custom-control-label text-truncate">Select Image File</label>
+                                        <input id="imagefile" name="imagefile" type="file" class="form-control-file">
+                                    </div>
+
                                     <button type="submit" class="btn btn-outline-success">Submit</button>
                                 </form>
                             </div>
@@ -36,6 +40,12 @@
         </div>
     </div>
 </div>
-
 </body>
+<script>
+    $('.custom-file-input').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
+</script>
+
 </html>
