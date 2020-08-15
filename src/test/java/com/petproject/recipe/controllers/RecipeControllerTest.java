@@ -2,6 +2,7 @@ package com.petproject.recipe.controllers;
 
 import com.petproject.recipe.commands.RecipeCommand;
 import com.petproject.recipe.domain.Recipe;
+import com.petproject.recipe.exceptions.NotFoundException;
 import com.petproject.recipe.service.RecipeServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class RecipeControllerTest {
 
     @Mock
-    RecipeServiceImpl recipeService     ;
+    RecipeServiceImpl recipeService;
 
     @Mock
     Model model;
@@ -75,6 +76,25 @@ public class RecipeControllerTest {
         assertEquals(2, setInController.size());
 
 
+    }
+
+//    @Test(expected = NotFoundException.class)
+//    public void getRecipeByIdTestNotFound() throws Exception {
+//        Optional<Recipe> recipeOptional = Optional.empty();
+//
+//        when(recipeService.findById(anyLong())).thenReturn(recipeOptional.get());
+//
+//        Recipe recipeReturned = recipeService.findById(1L);
+//
+//    }
+
+    @Test
+    public void testRecipeNotFound() throws Exception {
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+
+        when(recipeService.findById(anyLong())).thenThrow(NotFoundException.class);
+        mockMvc.perform(get("/recipe/1/show")).andExpect(status().isNotFound());
     }
 
     @Test
