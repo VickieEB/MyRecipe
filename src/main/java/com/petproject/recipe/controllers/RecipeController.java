@@ -3,12 +3,15 @@ package com.petproject.recipe.controllers;
 
 import com.petproject.recipe.commands.RecipeCommand;
 import com.petproject.recipe.domain.Recipe;
+import com.petproject.recipe.exceptions.NotFoundException;
 import com.petproject.recipe.service.RecipeServiceImpl;
 import com.petproject.recipe.utility.RecipePDFExporter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.text.DateFormat;
@@ -77,10 +80,17 @@ public class RecipeController {
         String headerKey =  "Content-Disposition";
         String headerValue = "attachment;  filename=recipelist_"+ currentDateTime + ".pdf";
         response.setHeader(headerKey, headerValue);
-
         Set<Recipe> recipes = recipeService.getRecipes();
-
         RecipePDFExporter exporter = new RecipePDFExporter(recipes);
         exporter.export(response);
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(NotFoundException.class)
+    public ModelAndView handleNotFound(){
+        log.error("Handling not found exception");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("404Error");
+        return modelAndView;
     }
 }
