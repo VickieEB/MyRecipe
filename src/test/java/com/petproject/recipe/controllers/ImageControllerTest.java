@@ -35,7 +35,8 @@ public class ImageControllerTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         controller = new ImageController(recipeService, imageService);
-        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(controller)
+                .setControllerAdvice(new ControllerExceptionHandler()).build();
     }
 
     @Test
@@ -51,6 +52,13 @@ public class ImageControllerTest {
                 .andExpect(model().attributeExists("recipe"));
 
         verify(recipeService, times(1)).findRecipeCommandById(anyLong());
+    }
+
+    @Test
+    public void testWrongRecipeIdFormat() throws Exception{
+        mockMvc.perform(get("/recipe/ik/image"))
+                .andExpect(status().isBadRequest())
+                .andExpect(view().name("400Error"));
     }
 
     @Test
