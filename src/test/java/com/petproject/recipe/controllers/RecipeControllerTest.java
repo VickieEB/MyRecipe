@@ -99,6 +99,13 @@ public class RecipeControllerTest {
     }
 
     @Test
+    public void testWrongRecipeIdFormat() throws Exception{
+        mockMvc.perform(get("/recipe/ik/show"))
+                .andExpect(status().isBadRequest())
+                .andExpect(view().name("400Error"));
+    }
+
+    @Test
     @DisplayName("Testing get Recipe by Id")
     public void testGetRecipeById() throws Exception{
         Recipe recipe = new Recipe();

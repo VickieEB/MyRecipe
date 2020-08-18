@@ -39,11 +39,10 @@ public class RecipeController {
         return "recipe/index";
     }
 
-
     @GetMapping("/{id}/show")
     public String showById(@PathVariable String id, Model model){
-        model.addAttribute("recipe", recipeService.findById(Long.valueOf(id)));
-        return "recipe/show";
+            model.addAttribute("recipe", recipeService.findById(Long.valueOf(id)));
+            return "recipe/show";
     }
 
     @GetMapping("/new")
@@ -91,6 +90,16 @@ public class RecipeController {
         log.error("Handling not found exception" + exception.getMessage());
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("404Error");
+        modelAndView.addObject("exception", exception);
+        return modelAndView;
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(NumberFormatException.class)
+    public ModelAndView handleBadRequest( Exception exception){
+        log.error("Handling Number Formet exception" + exception.getMessage());
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("400Error");
         modelAndView.addObject("exception", exception);
         return modelAndView;
     }
