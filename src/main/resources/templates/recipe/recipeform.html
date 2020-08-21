@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>New Recipe Form</title>
+    <title>Recipe Form</title>
 
     <!-- Latest compiled and minified CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
@@ -23,9 +23,15 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6 form-group">
+                                <div class="col-md-6 form-group" th:class="${#fields.hasErrors('description')} ? 'col-md-6 form-group has-error' : 'col-md-6 form-group'">
                                     <label>Recipe Description:</label>
-                                    <input type="text" class="form-control" th:field="*{description}"/>
+                                    <input type="text" class="form-control" th:field="*{description}" th:errorClass="has-error"/>
+                                    <span class="help-block" th:if="${#fields.hasErrors('description')}">
+                                        <ul>
+                                            <li th:each="err : ${#fields.errors('description')}" th:text="${err}"/>
+                                        </ul>
+
+                                    </span>
                                 </div>
                             </div>
                             <div class="row">
@@ -48,9 +54,14 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 form-group">
+                                <div class="col-md-3 form-group" th:class="${#fields.hasErrors('prepTime')} ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'>
                                     <label>Prep Time:</label>
-                                    <input type="text" class="form-control" th:field="*{prepTime}"/>
+                                    <input type="text" class="form-control" th:field="*{prepTime}" th:errorclass="has-error"/>
+                                    <span class="help-block" th:if="${#fields.hasErrors('prepTime')}">
+                                        <ul>
+                                            <li th:each="err : ${#fields.errors('prepTime')}" th:text="${err}"/>
+                                        </ul>
+                                    </span>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>Cooktime:</label>
