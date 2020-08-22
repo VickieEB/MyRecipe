@@ -23,14 +23,13 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6 form-group" th:class="${#fields.hasErrors('description')} ? 'col-md-6 form-group has-error' : 'col-md-6 form-group'">
+                                <div class="col-md-6 form-group">
                                     <label>Recipe Description:</label>
-                                    <input type="text" class="form-control" th:field="*{description}" th:errorClass="has-error"/>
-                                    <span class="help-block" th:if="${#fields.hasErrors('description')}">
+                                    <input type="text" class="form-control" th:field="*{description}" th:errorClass="is-invalid"/>
+                                    <span class=".invalid-feedback" th:if="${#fields.hasErrors('description')}">
                                         <ul>
                                             <li th:each="err : ${#fields.errors('description')}" th:text="${err}"/>
                                         </ul>
-
                                     </span>
                                 </div>
                             </div>
@@ -54,18 +53,23 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 form-group" th:class="${#fields.hasErrors('prepTime')} ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'>
+                                <div class="col-md-3 form-group">
                                     <label>Prep Time:</label>
-                                    <input type="text" class="form-control" th:field="*{prepTime}" th:errorclass="has-error"/>
-                                    <span class="help-block" th:if="${#fields.hasErrors('prepTime')}">
+                                    <input type="text" class="form-control" th:field="*{prepTime}" th:errorClass="is-invalid"/>
+                                    <span class=".invalid-feedback" th:if="${#fields.hasErrors('prepTime')}">
                                         <ul>
                                             <li th:each="err : ${#fields.errors('prepTime')}" th:text="${err}"/>
                                         </ul>
                                     </span>
                                 </div>
                                 <div class="col-md-3 form-group">
-                                    <label>Cooktime:</label>
-                                    <input type="text" class="form-control" th:field="*{cookTime}"/>
+                                    <label>Cook Time:</label>
+                                    <input type="text" class="form-control" th:field="*{cookTime}" th:errorClass="is-invalid"/>
+                                    <span class=".invalid-feedback" th:if="${#fields.hasErrors('cookTime')}">
+                                        <ul>
+                                            <li th:each="err : ${#fields.errors('cookTime')}" th:text="${err}"/>
+                                        </ul>
+                                    </span>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>Difficulty:</label>
