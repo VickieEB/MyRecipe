@@ -67,7 +67,7 @@
                                     <input type="text" class="form-control" th:field="*{cookTime}" th:errorClass="is-invalid"/>
                                     <span class=".invalid-feedback" th:if="${#fields.hasErrors('cookTime')}">
                                         <ul>
-                                            <li th:each="err : ${#fields.errors('cookTime')}" th:text="${err}"/>
+                                            <li class="form-control-danger" th:each="err : ${#fields.errors('cookTime')}" th:text="${err}"/>
                                         </ul>
                                     </span>
                                 </div>
@@ -89,15 +89,30 @@
                             <div class="row">
                                 <div class="col-md-3 form-group">
                                     <label>Servings:</label>
-                                    <input type="text" class="form-control" th:field="*{servings}"/>
+                                    <input type="text" class="form-control" th:field="*{servings}" th:errorClass="is-invalid"/>
+                                    <span class=".invalid-feedback" th:if="${#fields.hasErrors('servings')}">
+                                        <ul>
+                                            <li th:each="err : ${#fields.errors('servings')}" th:text="${err}"/>
+                                        </ul>
+                                    </span>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>Source:</label>
-                                    <input type="text" class="form-control" th:field="*{source}"/>
+                                    <input type="text" class="form-control" th:field="*{source}" th:errorClass="is-invalid"/>
+                                    <span class=".invalid-feedback" th:if="${#fields.hasErrors('source')}">
+                                        <ul>
+                                            <li th:each="err : ${#fields.errors('source')}" th:text="${err}"/>
+                                        </ul>
+                                    </span>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>URL:</label>
-                                    <input type="text" class="form-control" th:field="*{url}"/>
+                                    <input type="text" class="form-control" th:field="*{url}" th:errorClass="is-invalid"/>
+                                    <span class=".invalid-feedback" th:if="${#fields.hasErrors('url')}">
+                                        <ul>
+                                            <li th:each="err : ${#fields.errors('url')}" th:text="${err}"/>
+                                        </ul>
+                                    </span>
                                 </div>
                             </div>
                         </div>

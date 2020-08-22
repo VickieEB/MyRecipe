@@ -214,7 +214,7 @@ public class RecipeControllerTest {
 
         )
                 .andExpect(status().isOk())
-                .andExpect(model().attributeExists("recipe"))
+                .andExpect(model().attributeExists("recipes"))
                 .andExpect(view().name("recipe/recipeform"));
 
     }
