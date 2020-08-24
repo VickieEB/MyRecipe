@@ -208,7 +208,7 @@ public class RecipeControllerTest {
         mockMvc.perform(post("/recipe/create")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("id", "")
-                //.param("description", "some string")
+                .param("cookTime", "3000")
                 //.param("directions", "Some direction")
 
 
